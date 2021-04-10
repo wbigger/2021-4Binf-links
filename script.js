@@ -1,6 +1,6 @@
-const addNewLink = function(event) {
+const addNewSite = function(event) {
   event.preventDefault();
-  console.log("inside addNewLink");
+  console.log("inside addNewSite");
   const url = $("#form-url").val();
   const title = $("#form-title").val();
   const category = $("#form-category").val();
@@ -10,13 +10,13 @@ const addNewLink = function(event) {
 
   const aElem = $("<a>").attr("href",url).text(title);
   const liElem = $("<li>").append(aElem);
-  $("#link-list").append(liElem);
+  $("#site-list").append(liElem);
 
 }
 
 const init = function() {
   console.log("inside init");
-  $("#form-submit").on("click",addNewLink);
+  $("#form-submit").on("click",addNewSite);
 }
 
 
