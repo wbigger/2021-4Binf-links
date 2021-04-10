@@ -1,4 +1,5 @@
-const addNewLink = function() {
+const addNewLink = function(event) {
+  event.preventDefault();
   console.log("inside addNewLink");
   const url = $("#form-url").val();
   const title = $("#form-title").val();
