@@ -1,3 +1,5 @@
+[![Try on repl.it](https://repl-badge.jajoosam.repl.co/try.png)](https://replit.com/@ccapobianco/2021-4Binf-sites#script.js?ref=button)
+
 My favourite links list!
 
 [Link a repl.it](https://replit.com/@ccapobianco/2021-4Binf-sites).
