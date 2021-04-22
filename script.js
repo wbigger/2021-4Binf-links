@@ -5,8 +5,8 @@ const site2li = (site) => {
   const trashElem = $("<img>")
     .addClass("trash-icon")
     .attr("src", "trash.png")
-    .attr("alt", "trash icon "+site.id)
-    .attr("data-id",site.id);
+    .attr("alt", "trash icon")
+    .data("id",site.id);
   const liElem = $("<li>")
     .append(aElem)
     .append(trashElem);
@@ -17,10 +17,9 @@ const site2li = (site) => {
 const li2list = (newList, li) => newList.append(li)
 
 const writeSiteList = function (listElement, sites) {
-  const newSiteList = sites
+  sites
     .map(site2li)
-    .reduce(li2list, $("<ol>"));
-  listElement.html(newSiteList.html());
+    .reduce(li2list, listElement);
 }
 
 const generateId = function() {
