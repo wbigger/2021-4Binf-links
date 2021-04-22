@@ -21,9 +21,7 @@ const writeSiteList = (listElement, sites) =>
     .map(site2li)
     .reduce(li2list, listElement.html(""))
 
-const generateId = function() {
-   return Math.floor(Math.random()*100000); 
-}
+const generateId = () => Math.floor(Math.random()*100000)
 
 const addNewSite = function (event) {
   event.preventDefault();

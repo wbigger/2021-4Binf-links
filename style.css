@@ -8,6 +8,6 @@ input, select {
   float: right;
 }
 
-li {
+#site-list {
   width:40%;
 }
