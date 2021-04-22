@@ -16,12 +16,10 @@ const site2li = (site) => {
 
 const li2list = (newList, li) => newList.append(li)
 
-const writeSiteList = function (listElement, sites) {
-  listElement.html("");
-  sites
+const writeSiteList = (listElement, sites) =>
+   sites
     .map(site2li)
-    .reduce(li2list, listElement);
-}
+    .reduce(li2list, listElement.html(""))
 
 const generateId = function() {
    return Math.floor(Math.random()*100000); 
