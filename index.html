@@ -13,12 +13,17 @@
 	<form action="">
 		<input type="url" name="url" id="form-url" placeholder="URL">
     <input type="text" name="title" id="form-title" placeholder="titolo">
-    <input type="text" name="category" id="form-category" placeholder="categoria">
+    <select id="form-category" name="form-category">
+      <option value="categoria">Categoria</option>
+      <option value="scuola">Scuola</option>
+      <option value="gioco">Gioco</option>
+      <option value="ricette">Ricette</option>
+  </select>
     <input type="submit" value="Aggiungi" id="form-submit">
   </form>
 
   <ol id="site-list">
-<li><a href="https://app.diagrams.net/">Draw.io</a></li>
+    <li><a href="https://app.diagrams.net/">Draw.io</a> <img class="trash-icon" src="trash.png" alt="trash bin"> </li>
 
   </ol>
 

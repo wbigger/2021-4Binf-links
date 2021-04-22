@@ -1,4 +1,13 @@
-input {
+input, select {
   display: block;
   margin-top: 12px;
+}
+
+.trash-icon {
+  height: 1em;
+  float: right;
+}
+
+li {
+  width:40%;
 }

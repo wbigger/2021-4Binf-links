@@ -1,10 +1,33 @@
 const sites = [];
 
-const writeSiteList = function(sites) {
-
+const site2li = (site) => {
+  const aElem = $("<a>").attr("href", site.url).text(site.title);
+  const trashElem = $("<img>")
+    .addClass("trash-icon")
+    .attr("src", "trash.png")
+    .attr("alt", "trash icon "+site.id)
+    .attr("data-id",site.id);
+  const liElem = $("<li>")
+    .append(aElem)
+    .append(trashElem);
+  console.log("trashElem id: "+ trashElem.data("id"));
+  return liElem;
 }
 
-const addNewSite = function(event) {
+const li2list = (newList, li) => newList.append(li)
+
+const writeSiteList = function (listElement, sites) {
+  const newSiteList = sites
+    .map(site2li)
+    .reduce(li2list, $("<ol>"));
+  listElement.html(newSiteList.html());
+}
+
+const generateId = function() {
+   return Math.floor(Math.random()*100000); 
+}
+
+const addNewSite = function (event) {
   event.preventDefault();
   console.log("inside addNewSite");
   const url = $("#form-url").val();
@@ -12,30 +35,39 @@ const addNewSite = function(event) {
   const category = $("#form-category").val();
 
   const newSite = {
+    id: generateId(),
     url: url,
     title: title,
     category: category
   };
 
-  sites.append(newSite); // fino a qui OK
+  console.log("new site with ID: "+newSite.id)
 
-  // CONSEGNA: modificare la pagina in modo da funzionare con la nuova lista "sites"
+  sites.push(newSite); // fino a qui OK
 
-  const aElem = $("<a>").attr("href",url).text(title);
-  const liElem = $("<li>").append(aElem);
-  $("#site-list").append(liElem);
+  writeSiteList($("#site-list"), sites);
+
 }
 
-const init = function() {
+const deleteSite = function() {
+  console.log('dentro delete site!!');
+  const id = $(this).data("id");
+  console.log('site id: ' + id);
+  // elimino il sito con questo id
+  // aggiorno la lista visualizzata a schermo
+}
+
+
+let init = function () {
   console.log("inside init");
   $("form").submit(addNewSite);
+  $("#site-list").on("click",".trash-icon",deleteSite);
+  console.log();
 }
 
 $(document).ready(init);
 
 
-
-
   // const a1 = $("a"); // prendo tutti gli elementi con tag a
-  
+
   // const a2 = $("<a>"); // CREO un nuovo elemento con tag a
