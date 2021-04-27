@@ -47,7 +47,11 @@ const addNewSite = function (event) {
   sites.push(newSite); // fino a qui OK
 
   writeSiteList($("#site-list"), sites);
+  clearFields($("form"));
+}
 
+const clearFields = function(form) {
+  $("form").children(":input[type=text],:input[type=url]").val("");
 }
 
 const deleteSite = function () {
