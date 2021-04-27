@@ -3,11 +3,31 @@ input, select {
   margin-top: 12px;
 }
 
-.trash-icon {
+.action-icon {
   height: 1em;
   float: right;
 }
 
 #site-list {
   width:40%;
+}
+
+.action-container .action-icon {
+  visibility: hidden;
+}
+
+.action-container:hover .action-icon {
+  visibility: visible;
+}
+
+.action-container {
+  height: 1em;
+  width: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+li {
+  position: relative;
 }

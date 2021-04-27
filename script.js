@@ -2,26 +2,31 @@ const sites = [];
 
 const site2li = (site) => {
   const aElem = $("<a>").attr("href", site.url).text(site.title);
+
   const trashElem = $("<img>")
-    .addClass("trash-icon")
+    .addClass("action-icon")
     .attr("src", "trash.png")
     .attr("alt", "trash icon")
-    .data("id",site.id);
+    .data("id", site.id);
+  const actionContainerElem = $("<div>")
+    .addClass("action-container")
+    .append(trashElem);
   const liElem = $("<li>")
     .append(aElem)
-    .append(trashElem);
-  console.log("trashElem id: "+ trashElem.data("id"));
+    .append(actionContainerElem);
+
+  console.log("trashElem id: " + trashElem.data("id"));
   return liElem;
 }
 
 const li2list = (newList, li) => newList.append(li)
 
 const writeSiteList = (listElement, sites) =>
-   sites
+  sites
     .map(site2li)
     .reduce(li2list, listElement.html(""))
 
-const generateId = () => Math.floor(Math.random()*100000)
+const generateId = () => Math.floor(Math.random() * 100000)
 
 const addNewSite = function (event) {
   event.preventDefault();
@@ -37,7 +42,7 @@ const addNewSite = function (event) {
     category: category
   };
 
-  console.log("new site with ID: "+newSite.id)
+  console.log("new site with ID: " + newSite.id)
 
   sites.push(newSite); // fino a qui OK
 
@@ -45,7 +50,7 @@ const addNewSite = function (event) {
 
 }
 
-const deleteSite = function() {
+const deleteSite = function () {
   console.log('dentro delete site!!');
   const id = $(this).data("id");
   console.log('site id: ' + id);
@@ -57,7 +62,7 @@ const deleteSite = function() {
 let init = function () {
   console.log("inside init");
   $("form").submit(addNewSite);
-  $("#site-list").on("click",".trash-icon",deleteSite);
+  $("#site-list").on("click", ".trash-icon", deleteSite);
   console.log();
 }
 
